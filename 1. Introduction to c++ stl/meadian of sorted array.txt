@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+int median(int a[],int n,int b[],int m) {
+	int i=0,j=0;
+	int med = (n+m-1)/2;
+	for(int l=0;l<med;l++) {
+		if(a[i]<a[j]) {
+			i++;
+		}
+		else {
+			j++;
+		}
+	}
+	return min(a[i],b[j]);
+}
+int main() {
+	int n;
+	cin>>n;
+	int *input1 = new int[n];
+	int *input2 = new int[n];
+	for(int i=0;i<n;i++) {
+		cin>>input1[i];
+	}
+	for(int j=0;j<n;j++) {
+		cin>>input2[j];
+	}
+	cout<<median(input1,n,input2,n);
+	delete [] input1;
+	delete [] input2;
+	return 0;
+}

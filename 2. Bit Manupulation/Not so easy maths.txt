@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	long long t;
+	cin>>t;
+	while(t--) {
+		long long n;
+		cin>>n;
+		long long primes[] = {2,3,5,7,11,13,17,19};
+		long long subsets = (1<<8) - 1;
+		long long ans = 0;
+		for(long long i=1;i<=subsets;i++) {
+		    long long denominator = 1ll;
+			long long setBits = __builtin_popcount(i);
+			for(long long j=0;j<=7;j++) {
+				if(i&(1<<j)) {
+					denominator = denominator*primes[j];
+				}
+			}
+			if(setBits%2 == 0) {
+			    ans -= n/denominator;
+			}
+			else {
+			    ans += n/denominator;
+			}
+		}
+		cout<<ans<<endl;
+	}
+	return 0;
+}

@@ -1,0 +1,12 @@
+vector<string> substring(string s,vector<string> v) {
+	if(s.size() == 0) {
+		v.push_back("");
+		return v;
+	}
+	v = substring(s.substr(1),v);
+	int vSize = v.size();
+	for(int i=0;i<vSize;i++) {
+		v.push_back(s[0]+v.at(i));
+	}
+	return v;
+}
